@@ -1,10 +1,12 @@
+import { Box, Image, Text } from '@chakra-ui/react'
 import React from 'react'
-
+import Slider from './Slider'
 const Home = () => {
   return (
-    <div>
-      home page
-    </div>
+    <>
+    <Slider/>
+    <br />
+    </>
   )
 }
 
