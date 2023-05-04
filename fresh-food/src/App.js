@@ -1,9 +1,11 @@
-import './App.css';
+import "./App.css";
+
+import SplashScreen1 from "./pages/SplashScreen1";
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <SplashScreen1 />
     </div>
   );
 }
