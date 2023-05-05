@@ -1,6 +1,6 @@
 import React from "react";
-import SplashButton from "../components/SplashButton";
-import image_1 from "../../src/asset/image_1.png";
+import SplashButton from "../../components/SplashButton";
+import image_1 from "../../../src/asset/image_1.png";
 
 const SplashScreen1 = () => {
   return (
