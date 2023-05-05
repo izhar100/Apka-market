@@ -1,4 +1,5 @@
 import './App.css';
+import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import NavbarSmallScreen from './components/NavbarSmallScreen';
 import MainRoutes from './pages/MainRoutes';
@@ -9,6 +10,7 @@ function App() {
     <div className="App" style={{backgroundColor:"GhostWhite"}}>
       <Navbar/>
       <MainRoutes/>
+      <Footer/>
       <NavbarSmallScreen/>
     </div>
   );

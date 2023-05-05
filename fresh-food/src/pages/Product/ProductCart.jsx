@@ -5,17 +5,21 @@ import { IoCartOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import { addToCart } from '../../redux/cartReducer/action';
 import { useDispatch, useSelector } from 'react-redux';
+import { addToFavorite } from '../../redux/favoriteReducer/action';
 
 const ProductCart = ({product}) => {
     const dispatch=useDispatch()
     const handleAdd=()=>{
         dispatch(addToCart(product))
     }
+    const handleFavorite=()=>{
+        dispatch(addToFavorite(product))
+    }
     return (
         <Flex flexDirection={"column"} gap={"2px"}>
             <Box borderTopRadius={"20px"} p={"10px"} backgroundColor={"#f4f4f4"} textAlign={"center"}>
                 <Flex justifyContent={"right"}>
-                    <IoHeartOutline size="20px" color={"606060"} />
+                    <IoHeartOutline size="20px" color={"606060"} onClick={handleFavorite}/>
                 </Flex>
                 <Link to={`/product/${product.id}`}>
                     <Image src={product.image} borderRadius={"50%"} m={"auto"} w={"60%"} />
