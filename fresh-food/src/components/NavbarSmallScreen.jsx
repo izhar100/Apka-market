@@ -8,7 +8,7 @@ const NavbarSmallScreen = () => {
     const navigate=useNavigate()
   return (
     <>
-    <Box display={{lg:"none",xl:"none",md:"none",sm:"flex",base:"flex"}} w={"100%"} position={"fixed"} bottom={"0px"} bgColor={"white"} pt={"20px"} borderTopRadius={"50px"} boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}>
+    <Box zIndex={1} display={{lg:"none",xl:"none",md:"none",sm:"flex",base:"flex"}} w={"100%"} position={"fixed"} bottom={"0px"} bgColor={"white"} pt={"20px"} borderTopRadius={"50px"} boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}>
     <Flex justifyContent={"space-between"} alignItems={"center"} w={"80%"} m={"auto"}>
                   <MdHome size="30px" onClick={()=>navigate("/home")} style={{cursor:"pointer"}}/>
                  <IoHeartOutline size="30px" onClick={()=>navigate("/favorite")} style={{cursor:"pointer"}}/>
