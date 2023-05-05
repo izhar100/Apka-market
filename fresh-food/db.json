@@ -242,6 +242,16 @@
     }
 
   ],
+  "cart":[
+    {
+      "id":1,
+      "name":"Pomegranate Juice - Cold Pressed, 1 L",
+      "image":"https://www.bigbasket.com/media/uploads/p/l/40294762_1-fresho-signature-pomegranate-juice-cold-pressed.jpg",
+      "category":"juice",
+      "price":360,
+      "quantity":1
+    }
+  ],
   "user":[
     {
       "id":1,
