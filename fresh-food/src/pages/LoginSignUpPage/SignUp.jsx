@@ -1,11 +1,154 @@
-import React from 'react'
+import React from "react";
+import { AiOutlinePhone,AiOutlineMail } from "react-icons/ai";
+import { IconName, BsFillEnvelopeAtFill,BsKey } from "react-icons/bs";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+const imgLink =
+  "https://img.freepik.com/free-photo/delivery-concept-handsome-african-american-delivery-man-carrying-package-box-grocery-food-drink-from-store-isolated-grey-studio-background-copy-space_1258-1232.jpg";
 
 const SignUp = () => {
   return (
-    <div>
-      signup page
-    </div>
-  )
-}
+    <DIV>
+      <div className="container">
+        <img className="item" src={imgLink} alt="img" />
+        <form className="header">
+          <h3>Create Account </h3>
+          <h4 className="headerH4">Quickly create an account</h4>
+          <div className="input">
+            <AiOutlineMail />
+            <input type="text" placeholder="Connect using Google" />
+          </div>
+          <div className="input">
+            <AiOutlinePhone />
+            <input type="text" placeholder="Phone" />
+          </div>
+          <div className="input">
+            <BsKey />
+            <input type="text" placeholder="Password" />
+          </div>
+          <input className="submit" type="submit" value={"Sign Up"} />
+          <h4>
+            Already have a account?
+            <span>
+              {" "}
+              <Link to={"/login"}>Login</Link>
+            </span>
+          </h4>
+        </form>
+      </div>
+    </DIV>
+  );
+};
 
-export default SignUp
+export default SignUp;
+
+const DIV = styled.div`
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    /* border: 1px solid red; */
+    width: 35%;
+    margin: auto;
+    border-radius: 5px;
+  }
+  .item {
+    margin: auto;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+  }
+
+  form {
+    /* border: 1px solid red; */
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+  }
+  form > h3 {
+    font-weight: bold;
+    font-size: 35px;
+    text-align: left;
+    color: #323139;
+  }
+  form > h4 {
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    color: #323139;
+  }
+  .headerH4 {
+    font-weight: 400;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 20px;
+    color: #323139;
+  }
+  span {
+    color: #29c250;
+  }
+
+  form > div {
+    border: 1px solid #c0c4ca;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 90%;
+    margin: auto;
+    margin: 10px;
+    font-size: 25px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 35px;
+    gap: 25px;
+    padding-left: 25px;
+    margin-top: 15px;
+  }
+  .submit {
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    font-size: 25px;
+    margin-bottom: 100px;
+    align-items: center;
+    padding: 10px;
+    width: 85%;
+    margin: auto;
+    margin-right: 22px;
+    background-color: #29c250;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+`;
+
+// border: 1px solid gray;
+// padding: 10px 10px;
+
+// .container{
+//   border: 1px solid black;
+//   margin: auto;
+//   width: %;
+//   display: grid;
+//   justify-content: center;
+// }
+// div>img{
+//   border: 1px solid red;
+//   margin: auto;
+// }
+
+// form>h3{
+//   font-size: medium;
+//   font-style: bold;
+//   font-size: 35px;
+//   font-weight: 600;
+//   text-align: left;
+
+// }
+// input{
+//   border: 1px solid black;
+//   border-radius: 10px;
+//   padding: 10px;
+// }
