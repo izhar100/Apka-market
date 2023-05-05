@@ -10,20 +10,20 @@ const FavoriteProduct = ({ name, image, price, quantity }) => {
 
   return (
     <div
-      className="bg-[#f4f4f4] p-2 sm:flex-none md:flex-none lg:flex-none m-2 xs:flex items-center sm:hover:scale-110 duration-500"
+      className="bg-[#f4f4f4] p-2 sm:flex-none md:flex-none lg:flex-none m-2 xs:flex items-center rounded-5"
       onClick={() => setHandleDeleteClick(!handleDeletClick)}
     >
       <div className="xs:w-[30%] sm:w-[80%] mx-auto p-3">
         <img className="w-full rounded-full" src={image} alt="img" />
       </div>
-      <div className="xs:w-[50%]">
-        <h4>{price}</h4>
-        <h1>{trimmedName}</h1>
-        <h3>{quantity} kg</h3>
+      <div className="xs:w-[50%] font-sans">
+        <p className="text-xs md:text-base">₹ {price}</p>
+        <p className="text-xs md:text-base">{trimmedName}</p>
+        <p className="text-xs md:text-base">{quantity} kg</p>
       </div>
       <div className="xs:w-[20%] flex sm:justify-around m-4">
-        <SlBasketLoaded size={40} />
-        <AiOutlineDelete size={40} className="sm:block hidden" />
+        <SlBasketLoaded size={40} className="hover:bg-[green] pr-1" />
+        <AiOutlineDelete size={40} className="sm:block hidden hover:bg-[red]" />
       </div>
 
       <div
@@ -33,7 +33,7 @@ const FavoriteProduct = ({ name, image, price, quantity }) => {
           handleDeletClick ? "translate-y-0" : "-translate-x-full"
         }`}
       >
-        <AiOutlineDelete size={40} />
+        <AiOutlineDelete size={40} className="hover:bg-[red]" />
       </div>
     </div>
   );
