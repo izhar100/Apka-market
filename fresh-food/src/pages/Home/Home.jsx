@@ -1,3 +1,4 @@
+
 import { Box, Flex, Grid, Image, Text } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import Slider from './Slider'
@@ -8,6 +9,9 @@ import { TbCarrot,TbBottle } from "react-icons/tb";
 import { useNavigate } from 'react-router-dom';
 import DealNow from './DealNow';
 import { useSelector } from 'react-redux';
+import { Box, Image, Text } from "@chakra-ui/react";
+import React from "react";
+import Slider from "./Slider";
 const Home = () => {
   const navigate=useNavigate()
   const favoriteData=useSelector((store)=>store.FavoriteReducer.favoriteData)
@@ -92,8 +96,10 @@ const Home = () => {
         <br />
         <br />
       </Box>
+      <Slider />
+      <br />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

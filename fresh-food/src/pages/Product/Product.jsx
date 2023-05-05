@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { useLocation, useSearchParams } from 'react-router-dom'
@@ -88,7 +89,7 @@ const Product = () => {
         <Button onClick={() => setPage((pre) => pre + 1)} isDisabled={page === 32 / 8} color={"#00d100"}>NEXT</Button>
       </Flex>
     </>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;

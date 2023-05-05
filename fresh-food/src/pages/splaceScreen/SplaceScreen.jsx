@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const SplaceScreen = () => {
-  return (
-    <div>
-      splace screen
-    </div>
-  )
-}
+  return <div>splace screen</div>;
+};
 
-export default SplaceScreen
+export default SplaceScreen;
