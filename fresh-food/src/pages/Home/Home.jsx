@@ -1,13 +1,13 @@
-import { Box, Image, Text } from '@chakra-ui/react'
-import React from 'react'
-import Slider from './Slider'
+import { Box, Image, Text } from "@chakra-ui/react";
+import React from "react";
+import Slider from "./Slider";
 const Home = () => {
   return (
     <>
-    <Slider/>
-    <br />
+      <Slider />
+      <br />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
