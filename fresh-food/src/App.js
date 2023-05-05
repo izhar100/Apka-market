@@ -1,11 +1,11 @@
 import "./App.css";
 
-import SplashScreen1 from "./pages/SplashScreen1";
+import MainRoutes from "./pages/MainRoutes";
 
 function App() {
   return (
     <div className="App">
-      <SplashScreen1 />
+      <MainRoutes />
     </div>
   );
 }
