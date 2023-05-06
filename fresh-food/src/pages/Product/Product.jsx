@@ -23,7 +23,7 @@ const Product = () => {
   const dispatch = useDispatch()
   let allParams = {
     params: {
-      q: searchParam.get("q"),
+       category:searchParam.getAll('category'),
       _limit: 8,
       _page: page,
     }

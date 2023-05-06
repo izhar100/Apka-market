@@ -1,7 +1,12 @@
 import React from "react";
+import SplashScreen1 from "./SplashScreen1";
 
 const SplaceScreen = () => {
-  return <div>splace screen</div>;
+  return (
+    <>
+    <SplashScreen1/>
+    </>
+  );
 };
 
 export default SplaceScreen;

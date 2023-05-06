@@ -9,10 +9,10 @@ const Footer = () => {
     <Flex w={"90%"} m={"auto"} justifyContent={"space-between"} flexDirection={{lg:"row",xl:"row",md:"row",sm:"column",base:"column"}}>
      <Box>
       <Text as={"b"} fontSize={"20px"}>Apka Market</Text>
+      <Text>Admin</Text>
       <Text>About us</Text>
       <Text>Privacy Policy</Text>
       <Text>Term & Condition</Text>
-      <Text>In News</Text>
       <Text>Affiliate</Text>
      </Box>
      <Box>

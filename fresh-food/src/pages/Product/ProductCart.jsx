@@ -6,14 +6,30 @@ import { Link } from 'react-router-dom';
 import { addToCart } from '../../redux/cartReducer/action';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorite } from '../../redux/favoriteReducer/action';
+import {useToast} from '@chakra-ui/react'
 
 const ProductCart = ({product}) => {
     const dispatch=useDispatch()
+    const toast = useToast()
     const handleAdd=()=>{
         dispatch(addToCart(product))
+        toast({
+            title: 'Product Added to cart.',
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+            position:'top'
+          })
     }
     const handleFavorite=()=>{
         dispatch(addToFavorite(product))
+        toast({
+            title: 'Product Added to Favorite.',
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+            position:'top'
+          })
     }
     return (
         <Flex flexDirection={"column"} gap={"2px"}>
