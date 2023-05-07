@@ -10,6 +10,7 @@ import Cart from './Cart/Cart'
 import Order from './Order/Order'
 import SingleProduct from './SingleProduct/SingleProduct'
 import PageNotFound from './PageNotFound'
+import PaymentDone from './Payment/PaymentDone'
 /*cerververv*/
 const MainRoutes = () => {
   return (
@@ -24,6 +25,7 @@ const MainRoutes = () => {
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/order' element={<Order/>}/>
         <Route path='/product/:id' element={<SingleProduct/>}/>
+        <Route path='/payment' element={<PaymentDone/>}/>
         <Route path='*' element={<PageNotFound/>}/>
       </Routes>
     </div>

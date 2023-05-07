@@ -33,12 +33,13 @@ const Cart = () => {
   // }, [items]);
     
   if(items.length==0){
-    return <h1>Your Cart is Empty</h1>
+    return  <img style={{width:"100%",height:"600px"}} src="https://www.seekpng.com/png/detail/117-1170538_404-your-cart-is-empty.png" Text="Your Card is Empty" />
+    
   }
   return (
 
       <div className="container">
-        <h1>Shoping Cart </h1>
+        <div style={{height:'60px',width:"100%",backgroundColor:"greenyellow",textAlign:"center",display:"flex",justifyContent:"center"}}><h3 style={{color:"white",paddingTop:"10px",fontWeight:"bold"}}>SHOPPING CART </h3></div>
         <div className="cart_item">
           {
             items?.map((el)=>{return <CartItem handleRemove={handleRemove} key={el.id} product={el}  />})
