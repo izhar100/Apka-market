@@ -22,6 +22,13 @@ Admin
 2. Delete Product 
 3. Update Product
 
+# Tech Stacks
+ - React
+ - Chakra ui
+ - Tailwind css
+ - Styled components
+ - JSON-Server (Deployed on Cyclic)
+
 # Snapshots
 
   
