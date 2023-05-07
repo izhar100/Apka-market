@@ -3,28 +3,21 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { addData } from '../redux/AdminProductReducer/action';
 import { AdminNavbar } from '../components/AdminNavbar';
+import { useNavigate } from 'react-router';
 
 
 const initialState = {
-  id:0,
-  type:"",
   name: "",
   price:"",
-  "strikeoff-price":"",
-  image:[],
-  discount:"",
-  
-  productline:"",
-  brand:"",
-  rating: {
-    rate: "",
-    count: "",
-  },
+  image:"", 
+  category:"",
+  quantity:1,
 }
 
  const Admin = () => {
   const [product,setProduct] = useState(initialState)
   const dispatch = useDispatch();
+  const navigate=useNavigate()
 
   const handleChange = (e) => {
     
@@ -52,6 +45,7 @@ const initialState = {
     dispatch(addData(product));
     setProduct(initialState)
     alert('Product added successfully!');
+    navigate('/admindashboard');
   }
   return (
     <DIV>
@@ -62,18 +56,11 @@ const initialState = {
 
       <form onSubmit={handleSubmit} >
       <h2>Add Product</h2>
-      <input 
-            type="number" value={product.id} onChange={(e)=> { handleChange(e)}} name="id" placeholder='Id'/>
-        <input 
-            type="text" value={product.type} onChange={(e)=> { handleChange(e)}} name="type" placeholder='Type'/>
+
         <input 
             type="text" value={product.name} onChange={(e)=> { handleChange(e)}} name="name" placeholder='Name'/>
         <input 
-            type="number" value={product.price} onChange={(e)=> { handleChange(e)}} name="price" placeholder='Price'/>
-        <input 
-            type="number" value={product["strikeoff-price"]} onChange={(e)=> { handleChange(e)}} name="strikeoff-price" placeholder='strikeoff-price'/>  
-        <input 
-            type="number" value={product.discount} onChange={(e)=> { handleChange(e)}} name="discount" placeholder='Discount'/>            
+            type="number" value={product.price} onChange={(e)=> { handleChange(e)}} name="price" placeholder='Price'/>      
         <input 
             type="text" value={product.image[1]} onChange={(e)=> { handleChange(e)}} name="image1" placeholder='image'/>
         <input 
@@ -85,11 +72,7 @@ const initialState = {
           
         </select> */}
         <input 
-            type="text" value={product.productline} onChange={(e)=> { handleChange(e)}} name="productline" placeholder='productline'/>
-        <input 
-            type="text" value={product.color} onChange={(e)=> { handleChange(e)}} name="color" placeholder='color'/>
-        <input 
-            type="text" value={product.description} onChange={(e)=> { handleChange(e)}} name="description" placeholder='description'/> 
+            type="text" value={product.category} onChange={(e)=> { handleChange(e)}} name="category" placeholder='category'/> 
         <input 
             type="number" value={product.quantity} onChange={(e)=> { handleChange(e)}} name="quantity" placeholder='quantity' />
         {/* <input 
