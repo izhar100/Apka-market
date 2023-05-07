@@ -1,4 +1,4 @@
-# Apka Market - a fully function fruits and vegetable selling application
+# Apka Market - a fully function Fruits and Vegetables selling application
 deployed link: 
 
 
