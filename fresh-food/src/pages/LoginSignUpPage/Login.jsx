@@ -25,10 +25,10 @@ const Login = () => {
           </div>
           <input className="submit" type="submit" value={"Sign In"} />
           <h4>
-            Already have a account?
+            New on Apka Market?
             <span>
               {" "}
-              <Link to={"/login"}>Login</Link>
+              <Link to={"/signup"}>Create Account</Link>
             </span>
           </h4>
         </form>

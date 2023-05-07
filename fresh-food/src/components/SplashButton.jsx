@@ -1,10 +1,13 @@
+import { Button } from "@chakra-ui/react";
 import React from "react";
 
 const SplashButton = ({ title }) => {
   return (
-    <button className="w-[80%] text-white mx-auto bg-[#29c250] md:bg-none p-2 rounded-3xl md:bg-transparent text-2xl md:text-[#29c250]">
-      {title}
-    </button>
+   <>
+    <Button width={"80%"} bgColor={"#00ff44"} borderRadius={"50px"} color={"white"} p={"5px"} _hover={{backgroundColor:"#00ff44"}}>
+      {/* {title} */}
+    </Button>
+    <br /></>
   );
 };
 

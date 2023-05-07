@@ -4,6 +4,7 @@ import { reducer as ProductReducer } from "./ProductReducer/reducer";
 import { reducer as CartReducer } from "./cartReducer/reducer";
 import { reducer as FavoriteReducer } from "./favoriteReducer/reducer";
 import {reducer as AdminProductReducer} from './AdminProductReducer/reducer'
+
 import thunk from "redux-thunk";
 const rootReducer=combineReducers({
     AuthReducer,
@@ -12,5 +13,4 @@ const rootReducer=combineReducers({
     AdminProductReducer,
     FavoriteReducer
 })
-
 export const store = legacy_createStore(rootReducer, applyMiddleware(thunk));
