@@ -23,7 +23,7 @@ const Product = () => {
   const dispatch = useDispatch()
   let allParams = {
     params: {
-      q: searchParam.get("q"),
+       category:searchParam.getAll('category'),
       _limit: 8,
       _page: page,
     }
@@ -31,9 +31,9 @@ const Product = () => {
   useEffect(() => {
     dispatch(getProducts(allParams))
   }, [page])
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartData))
-  }, [cartData])
+  // useEffect(() => {
+  //   localStorage.setItem("cart", JSON.stringify(cartData))
+  // }, [cartData])
 
   useEffect(() => {
     console.log(favoriteData)
