@@ -10,7 +10,7 @@ const FavoriteProduct = ({ name, image, price, quantity }) => {
 
   return (
     <div
-      className="bg-[#f4f4f4] p-2 sm:flex-none md:flex-none lg:flex-none m-2 xs:flex items-center rounded-5"
+      className="bg-[#f4f4f4] p-2 sm:flex-none md:flex-none lg:flex-none m-2 xs:flex items-center rounded-5 hover:scale-105 duration-500"
       onClick={() => setHandleDeleteClick(!handleDeletClick)}
     >
       <div className="xs:w-[30%] sm:w-[80%] mx-auto p-3">
