@@ -10,10 +10,10 @@ import Cart from './Cart/Cart'
 import Order from './Order/Order'
 import SingleProduct from './SingleProduct/SingleProduct'
 import PageNotFound from './PageNotFound'
+import PaymentDone from './Payment/PaymentDone'
 import Admin from './Admin'
 import AdminDashboard from './AdminDashboard'
 import AdminEditProduct from './AdminEditProduct'
-/*cerververv*/
 const MainRoutes = () => {
   return (
     <div>
@@ -27,6 +27,7 @@ const MainRoutes = () => {
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/order' element={<Order/>}/>
         <Route path='/product/:id' element={<SingleProduct/>}/>
+        <Route path='/payment' element={<PaymentDone/>}/>
         <Route path="/admin" element={<Admin />} />
       <Route path="/admindashboard" element={<AdminDashboard/>}/>
       <Route path="/edit/:id" element={<AdminEditProduct/>}/> 
