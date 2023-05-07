@@ -4,6 +4,7 @@ const initState={
   cartData: [],
 }
 export const reducer = (state=initState,{type,payload}) => {
+
   // Complete the logic
   switch(type){
     case ADD_TO_CART:{
@@ -12,5 +13,4 @@ export const reducer = (state=initState,{type,payload}) => {
     default:{
       return state
     }
-  }
-};
+  }};
