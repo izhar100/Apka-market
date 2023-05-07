@@ -12,27 +12,53 @@ import {
     TableContainer,
     Button,
   } from '@chakra-ui/react'
-  
-  let SubTotal=0
-
+import { useDispatch, useSelector } from 'react-redux'
+import { decreaseQTY, increaseQTY } from '../../redux/cartReducer/action'
+import { RiDeleteBin5Line } from "react-icons/ri";
+import {useToast} from '@chakra-ui/react'
  function CartItem ({handleRemove,product})  {
-  const [qty,setQty]=useState(1)
+  const cartData=useSelector((store)=>store.CartReducer.cartData)
+  const dispatch=useDispatch()
+  const toast=useToast()
+  const [qty,setQty]=useState(product.quantity)
     const handleAdd=(()=>{
         setQty(qty+1)
+        const newdata=cartData.map((el)=>{
+          if(el.id==product.id){
+            el.quantity++;
+          }
+          return el;
+        })
+        console.log(newdata)
+        dispatch(increaseQTY(newdata))
     })
     const handleReduce=(()=>{
       setQty(qty-1)
-    })
-     useEffect(()=>{
-      const el=document.querySelector(".subTotal")
-      console.log(el)
-    })
+      const newdata=cartData.map((el)=>{
+        if(el.id==product.id){
+          el.quantity--;
+        }
+        return el;
+      })
+      console.log(newdata)
+      dispatch(decreaseQTY(newdata))
 
+    })
+const handleDelete=()=>{
+  handleRemove(product.id)
+  toast({
+    title: 'Product Removed from cart.',
+    status: 'error',
+    duration: 3000,
+    isClosable: true,
+    position:'top'
+  })
+}
+const trimmedName = product.name.length ? product.name.substring(0, 15) + "..." : product.name;
 
   return (
     <TableContainer>
   <Table variant='striped' colorScheme='green'>
-    <TableCaption>Shoping Now </TableCaption>
     <Thead>
       <Tr>
         <Th>Item</Th>
@@ -46,7 +72,7 @@ import {
     <Tbody>
       <Tr>
         <Td><img style={{width:"100px",borderRadius:"50%"}} src={product.image} alt={product.id} /></Td>
-        <Td>{product.name}</Td>
+        <Td>{trimmedName}</Td>
         <Td>₹{product.price}</Td>
         <Td isNumeric>
             <Button isDisabled={qty===1} onClick={handleReduce}>-</Button>
@@ -55,7 +81,7 @@ import {
         </Td>
         <Td className='subTotal'>₹{qty*product.price}</Td>
         <Td>
-          <Button onClick={()=>handleRemove(product.id)}>Delete</Button></Td>
+          <Button bgColor={"#ff2600"} _hover={{backgroundColor:"#ff2600"}} color={"white"} onClick={handleDelete}><RiDeleteBin5Line size={"20px"}/></Button></Td>
       </Tr>
     </Tbody>
   </Table>

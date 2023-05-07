@@ -31,9 +31,9 @@ const Product = () => {
   useEffect(() => {
     dispatch(getProducts(allParams))
   }, [page])
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartData))
-  }, [cartData])
+  // useEffect(() => {
+  //   localStorage.setItem("cart", JSON.stringify(cartData))
+  // }, [cartData])
 
   useEffect(() => {
     console.log(favoriteData)
