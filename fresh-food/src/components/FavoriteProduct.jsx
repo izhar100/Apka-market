@@ -2,11 +2,33 @@ import React from "react";
 import { SlBasketLoaded } from "react-icons/sl";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartReducer/action";
 
-const FavoriteProduct = ({ name, image, price, quantity }) => {
+const FavoriteProduct = ({
+  name,
+  image,
+  price,
+  quantity,
+  onDelete,
+  id,
+  handleAddBasket,
+  item,
+}) => {
+  const dispatch = useDispatch();
   const [handleDeletClick, setHandleDeleteClick] = useState(false);
 
   const trimmedName = name.length ? name.substring(0, 20) + "..." : name;
+  const handleAddToCart = () => {
+    const product = {
+      id,
+      name,
+      image,
+      price,
+      quantity,
+    };
+    dispatch(addToCart(product));
+  };
 
   return (
     <div
@@ -22,8 +44,16 @@ const FavoriteProduct = ({ name, image, price, quantity }) => {
         <p className="text-xs md:text-base">{quantity} kg</p>
       </div>
       <div className="xs:w-[20%] flex sm:justify-around m-4">
-        <SlBasketLoaded size={40} className="hover:bg-[green] pr-1" />
-        <AiOutlineDelete size={40} className="sm:block hidden hover:bg-[red]" />
+        <SlBasketLoaded
+          size={40}
+          className="hover:bg-[green] pr-1"
+          onClick={() => handleAddBasket(item)}
+        />
+        <AiOutlineDelete
+          size={40}
+          className="sm:block hidden hover:bg-[red]"
+          onClick={() => onDelete(id)}
+        />
       </div>
 
       <div
@@ -33,7 +63,11 @@ const FavoriteProduct = ({ name, image, price, quantity }) => {
           handleDeletClick ? "translate-y-0" : "-translate-x-full"
         }`}
       >
-        <AiOutlineDelete size={40} className="hover:bg-[red]" />
+        <AiOutlineDelete
+          size={40}
+          className="hover:bg-[red]"
+          onClick={() => onDelete(id)}
+        />
       </div>
     </div>
   );
