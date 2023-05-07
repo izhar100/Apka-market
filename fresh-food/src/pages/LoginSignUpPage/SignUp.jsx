@@ -1,13 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlinePhone,AiOutlineMail } from "react-icons/ai";
 import { IconName, BsFillEnvelopeAtFill,BsKey } from "react-icons/bs";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import {useToast} from '@chakra-ui/react'
 
 const imgLink =
   "https://img.freepik.com/free-photo/delivery-concept-handsome-african-american-delivery-man-carrying-package-box-grocery-food-drink-from-store-isolated-grey-studio-background-copy-space_1258-1232.jpg";
 
 const SignUp = () => {
+  const [name,setName]=useState("")
+  const [email,setEmail]=useState("")
+  const [password,setPassword]=useState("")
+  const toast = useToast()
+  const handleSignUp=(e)=>{
+    e.preventDefault()
+    if(name==""){
+      toast({
+        title: 'Please enter your name.',
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+        position:'top'
+      })
+    }else if(email==""){
+      toast({
+        title: 'Please enter your email.',
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+        position:'top'
+      })
+    }else if(password==""){
+      toast({
+        title: 'Please enter a Password.',
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+        position:'top'
+      })
+    }else{
+      const signUpData={
+        name,
+        email,
+        password
+      }
+      console.log(signUpData)
+    }
+  }
   return (
     <DIV>
       <div className="container">
@@ -17,17 +57,17 @@ const SignUp = () => {
           <h4 className="headerH4">Quickly create an account</h4>
           <div className="input">
             <AiOutlineMail />
-            <input type="text" placeholder="Connect using Google" />
+            <input type="text" value={name} placeholder="Name" onChange={(e)=>setName(e.target.value)}/>
           </div>
           <div className="input">
             <AiOutlinePhone />
-            <input type="text" placeholder="Phone" />
+            <input type="text" value={email} placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
           </div>
           <div className="input">
             <BsKey />
-            <input type="text" placeholder="Password" />
+            <input type="text" value={password} placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
           </div>
-          <input className="submit" type="submit" value={"Sign Up"} />
+          <input className="submit" type="submit" value={"Sign Up"} onClick={handleSignUp}/>
           <h4>
             Already have a account?
             <span>

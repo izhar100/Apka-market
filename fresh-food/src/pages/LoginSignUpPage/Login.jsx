@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlinePhone,AiOutlineMail } from "react-icons/ai";
 import { IconName, BsFillEnvelopeAtFill,BsKey } from "react-icons/bs";
 import styled from "styled-components";
@@ -8,6 +8,16 @@ const imgLink =
   "https://img.freepik.com/free-photo/groceries-packages-delivery-covid-19-quarantine-shopping-concept-handsome-smiling-courier-red-uniform-give-cheeky-wink-as-delivering-food-box-online-order-client-house_1258-58697.jpg";
 
 const Login = () => {
+  const [email,setEmail]=useState("")
+  const [password,setPassword]=useState("")
+  const handleLogin=(e)=>{
+    e.preventDefault()
+     const loginData={
+      email,
+      password
+     }
+     console.log(loginData)
+  }
   return (
     <DIV>
       <div className="container">
@@ -17,13 +27,13 @@ const Login = () => {
           <h4 className="headerH4">Sign in to your account</h4>
           <div className="input">
             <AiOutlineMail />
-            <input type="text" placeholder="Connect using Google" />
+            <input type="text" value={email} placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
           </div>
           <div className="input">
             <BsKey />
-            <input type="text" placeholder="Password" />
+            <input type="text" value={password} placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />
           </div>
-          <input className="submit" type="submit" value={"Sign In"} />
+          <input className="submit" type="submit" value={"Sign In"} onClick={handleLogin} />
           <h4>
             New on Apka Market?
             <span>
