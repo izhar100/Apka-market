@@ -1,67 +1,82 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 
-import { grid,Button, Flex, Text } from '@chakra-ui/react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import CartItem from './CartItem';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeFromCart } from '../../redux/cartReducer/action';
+import { grid, Button, Flex, Text } from "@chakra-ui/react";
+import { Navigate, useNavigate } from "react-router-dom";
+import CartItem from "./CartItem";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "../../redux/cartReducer/action";
 const Cart = () => {
-  const cartData=useSelector((store)=>store.CartReducer.cartData)
-  const dispatch=useDispatch()
-  const navigate=useNavigate()
+  const cartData = useSelector((store) => store.CartReducer.cartData);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    localStorage.setItem("cart",JSON.stringify(cartData))
-    let subtotal=0;
-    for(let i=0; i<cartData.length; i++){
-      subtotal+=cartData[i].price*cartData[i].quantity
+    localStorage.setItem("cart", JSON.stringify(cartData));
+    let subtotal = 0;
+    for (let i = 0; i < cartData.length; i++) {
+      subtotal += cartData[i].price * cartData[i].quantity;
     }
-    localStorage.setItem("total",subtotal)
-    setTotal(subtotal)
-    setItems(cartData)
+    localStorage.setItem("total", subtotal);
+    setTotal(subtotal);
+    setItems(cartData);
   }, [cartData]);
   const handleRemove = (id) => {
-    const updatedItems = items.filter((item) => item.id !== id)
-    dispatch(removeFromCart(updatedItems))
-  }
+    const updatedItems = items.filter((item) => item.id !== id);
+    dispatch(removeFromCart(updatedItems));
+  };
   // useEffect(() => {
   //   const sum = items.reduce((acc, item) => acc + item.price * item.qty, 0);
   //   setTotal(sum);
   //   console.log(sum)
   // }, [items]);
 
-  if(items.length==0){
-    return <h1>Your Cart is Empty</h1>
+  if (items.length == 0) {
+    return <h1>Your Cart is Empty</h1>;
   }
   return (
-
-      <div className="container">
-        <h1>Shoping Cart </h1>
-        <div className="cart_item">
-          {
-            items?.map((el)=>{return <CartItem handleRemove={handleRemove} key={el.id} product={el}  />})
-          }
-        </div>
-        <br />
-        <Flex w={"60%"} m={"auto"} justifyContent={"space-between"}>
-          <Text fontSize={"25px"} color={"#4d4d4d"}>Subtotal:</Text>
-          <Text fontSize={"25px"} color={"#4d4d4d"}>₹ {total}</Text>
-        </Flex>
-        <Flex w={"60%"} m={"auto"} justifyContent={"space-between"}>
-          <Text fontSize={"20px"} color={"#4d4d4d"}>Shipping:</Text>
-          <Text fontSize={"20px"} color={"#4d4d4d"}>₹ 0</Text>
-        </Flex>
-       <Button w={"40%"} _hover={{backgroundColor:"#00c22a"}} color={"white"} bgColor={"#00c22a"} borderRadius={"30px"} onClick={()=>navigate("/order")}>Place Order</Button>
+    <div className="container">
+      <h1>Shoping Cart </h1>
+      <div className="cart_item">
+        {items?.map((el) => {
+          return (
+            <CartItem handleRemove={handleRemove} key={el.id} product={el} />
+          );
+        })}
       </div>
+      <br />
+      <Flex w={"60%"} m={"auto"} justifyContent={"space-between"}>
+        <Text fontSize={"25px"} color={"#4d4d4d"}>
+          Subtotal:
+        </Text>
+        <Text fontSize={"25px"} color={"#4d4d4d"}>
+          ₹ {total}
+        </Text>
+      </Flex>
+      <Flex w={"60%"} m={"auto"} justifyContent={"space-between"}>
+        <Text fontSize={"20px"} color={"#4d4d4d"}>
+          Shipping:
+        </Text>
+        <Text fontSize={"20px"} color={"#4d4d4d"}>
+          ₹ 0
+        </Text>
+      </Flex>
+      <Button
+        w={"40%"}
+        _hover={{ backgroundColor: "#00c22a" }}
+        color={"white"}
+        bgColor={"#00c22a"}
+        borderRadius={"30px"}
+        onClick={() => navigate("/order")}
+      >
+        Place Order
+      </Button>
     </div>
   );
 };
 
-export default Cart
-
-
+export default Cart;
 // ---------------------------------------------------------------------------------------------------------------------------------
 // import styled from "styled-components";
 // import { useCartContext } from "./Context/Cart_context";
