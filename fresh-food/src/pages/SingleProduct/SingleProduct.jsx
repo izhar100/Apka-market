@@ -11,7 +11,6 @@ import axios from "axios";
 const SingleProduct = () => {
   const [singleProduct, setSingleProduct] = useState({});
   const { id } = useParams();
-  console.log(id);
   const product = async () => {
     const data = await axios
       .get(`https://fine-puce-hippo-gown.cyclic.app/product/${id}`)

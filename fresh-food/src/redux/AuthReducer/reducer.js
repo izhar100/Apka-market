@@ -2,8 +2,8 @@ import { ADMIN_LOGIN, GET_USER_DATA, USER_LOGIN } from "./actionType";
 
 const initState={
     userData:[],
-    userAuth:false,
-    adminAuth:false
+    userAuth:localStorage.getItem("userAuth")||false,
+    adminAuth:localStorage.getItem("adminAuth")||false
 }
 export const reducer=(state=initState,{type,payload})=>{
     switch(type){

@@ -14,11 +14,12 @@ import PaymentDone from './Payment/PaymentDone'
 import Admin from './Admin'
 import AdminDashboard from './AdminDashboard'
 import AdminEditProduct from './AdminEditProduct'
+import Account from './Account/Account'
 const MainRoutes = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<SplaceScreen/>}/>
+        <Route path="/" element={<Home/>}/>
         <Route path='/home' element={<Home/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<SignUp/>}/>
@@ -32,6 +33,7 @@ const MainRoutes = () => {
       <Route path="/admindashboard" element={<AdminDashboard/>}/>
       <Route path="/edit/:id" element={<AdminEditProduct/>}/> 
         <Route path='*' element={<PageNotFound/>}/>
+        <Route path='/profile' element={<Account/>} />
       </Routes>
     </div>
   )

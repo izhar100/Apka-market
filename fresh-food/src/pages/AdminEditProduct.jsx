@@ -2,13 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-// import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import { editProduct, getProducts } from '../redux/AdminProductReducer/action';
 import { AdminNavbar } from '../components/AdminNavbar';
-import AdminDashboard from './AdminDashboard';
 const initialState = {
   name: "",
   image:[],
