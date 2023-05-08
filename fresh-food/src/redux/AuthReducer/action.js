@@ -1,5 +1,5 @@
 import axios from "axios"
-import { ADMIN_LOGIN, GET_USER_DATA, USER_LOGIN } from "./actionType"
+import { ADMIN_LOGIN, GET_USER_DATA, LOG_OUT, USER_LOGIN } from "./actionType"
 
 export const userLogin=(payload)=>{
     return {type:USER_LOGIN,payload}
@@ -10,6 +10,8 @@ export const getUserData=(dispatch)=>{
     })
 }
 export const adminLogin=(payload)=>{
-    console.log(payload)
     return {type:ADMIN_LOGIN,payload}
+}
+export const logOut=(payload)=>{
+    return {type:LOG_OUT,payload}
 }

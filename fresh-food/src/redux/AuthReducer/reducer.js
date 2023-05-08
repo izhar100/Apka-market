@@ -1,4 +1,4 @@
-import { ADMIN_LOGIN, GET_USER_DATA, USER_LOGIN } from "./actionType";
+import { ADMIN_LOGIN, GET_USER_DATA, LOG_OUT, USER_LOGIN } from "./actionType";
 
 const initState={
     userData:[],
@@ -15,6 +15,9 @@ export const reducer=(state=initState,{type,payload})=>{
         }
         case ADMIN_LOGIN:{
             return {...state,userAuth:false,adminAuth:payload}
+        }
+        case LOG_OUT:{
+            return {...state,adminAuth:payload,userAuth:payload}
         }
         default:{
             return state;

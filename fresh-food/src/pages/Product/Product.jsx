@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { getProducts } from "../../redux/ProductReducer/action";
 import { Box, Button, Flex, Grid, Stack } from "@chakra-ui/react";
 import ProductCart from "./ProductCart";
-import { Skeleton, SkeletonCircle, SkeletonText } from "@chakra-ui/react";
+import { Skeleton } from "@chakra-ui/react";
 
 const Product = () => {
   const cartData = useSelector((store) => store.CartReducer.cartData);

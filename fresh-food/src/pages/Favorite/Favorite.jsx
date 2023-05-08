@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import FavoriteProduct from "../../components/FavoriteProduct";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/cartReducer/action";
+import { useToast } from "@chakra-ui/react";
 
 const Favorite = () => {
   const [data, setData] = useState([]);
 
   const dispatch = useDispatch();
   const favoriteData = useSelector((store) => store);
+  const toast=useToast()
 
   useEffect(() => {
     const updateddata = JSON.parse(localStorage.getItem("favorite")) || [];
@@ -22,7 +24,13 @@ const Favorite = () => {
     const updatedData = data.filter((item) => item.id !== productId);
     setData(updatedData);
     localStorage.setItem("favorite", JSON.stringify(updatedData));
-    alert("Item will be removed from favourites");
+    toast({
+      title: 'Product deleted from favorite.',
+      status: 'error',
+      duration: 3000,
+      isClosable: true,
+      position:'top'
+    })
   };
 
   // Check if favoriteData is empty or not available yet
@@ -35,7 +43,13 @@ const Favorite = () => {
     cartItems.push(item);
     localStorage.setItem("cart", JSON.stringify(cartItems));
     dispatch(addToCart(item));
-    alert("Item added to cart");
+    toast({
+      title: 'Product Added to cart.',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+      position:'top'
+    })
   };
 
   return (

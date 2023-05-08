@@ -15,7 +15,7 @@ const Footer = () => {
   const navigate=useNavigate()
   const handleClick=()=>{
     if(userAuth){
-      navigate("/account")
+      navigate("/profile")
     }else if(adminAuth){
       navigate("/admin")
     }else{
