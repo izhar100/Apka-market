@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { AiOutlinePhone,AiOutlineMail } from "react-icons/ai";
 import { IconName, BsFillEnvelopeAtFill,BsKey } from "react-icons/bs";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {useToast} from '@chakra-ui/react'
+import axios from "axios";
 
 const imgLink =
   "https://img.freepik.com/free-photo/delivery-concept-handsome-african-american-delivery-man-carrying-package-box-grocery-food-drink-from-store-isolated-grey-studio-background-copy-space_1258-1232.jpg";
@@ -13,6 +14,7 @@ const SignUp = () => {
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
   const toast = useToast()
+  const navigate=useNavigate()
   const handleSignUp=(e)=>{
     e.preventDefault()
     if(name==""){
@@ -45,7 +47,17 @@ const SignUp = () => {
         email,
         password
       }
-      console.log(signUpData)
+      axios.post(`https://fine-puce-hippo-gown.cyclic.app/user`,signUpData)
+      setTimeout(()=>{
+        toast({
+          title: 'Account created successfully Please login to explore.',
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+          position:'top'
+        })
+        navigate("/login")
+      },500)
     }
   }
   return (
