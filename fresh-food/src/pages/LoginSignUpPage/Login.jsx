@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { AiOutlinePhone,AiOutlineMail } from "react-icons/ai";
-import { IconName, BsFillEnvelopeAtFill,BsKey } from "react-icons/bs";
+import { AiOutlineMail } from "react-icons/ai";
+import { BsKey } from "react-icons/bs";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
-import SignUp from "./SignUp";
-import axios from "axios";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { adminLogin, getUserData, userLogin } from "../../redux/AuthReducer/action";
 import { useToast } from "@chakra-ui/react";

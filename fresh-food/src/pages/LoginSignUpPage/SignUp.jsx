@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlinePhone,AiOutlineMail } from "react-icons/ai";
-import { IconName, BsFillEnvelopeAtFill,BsKey } from "react-icons/bs";
+import { BsKey } from "react-icons/bs";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import {useToast} from '@chakra-ui/react'

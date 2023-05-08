@@ -16,7 +16,6 @@ const SingleProduct = () => {
   const dispatch = useDispatch();
   console.log(quantity);
   const { id } = useParams();
-  console.log(id);
   const product = async () => {
     const data = await axios
       .get(`https://fine-puce-hippo-gown.cyclic.app/product/${id}`)

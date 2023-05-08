@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { getProducts } from "../../redux/ProductReducer/action";
 import { Box, Button, Flex, Grid, Stack } from "@chakra-ui/react";
 import ProductCart from "./ProductCart";

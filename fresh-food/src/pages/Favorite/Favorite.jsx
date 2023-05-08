@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FavoriteProduct from "../../components/FavoriteProduct";
 import { useDispatch, useSelector } from "react-redux";
-import { addToFavorite } from "../../redux/favoriteReducer/action";
 import { addToCart } from "../../redux/cartReducer/action";
 
 const Favorite = () => {
@@ -9,8 +8,6 @@ const Favorite = () => {
 
   const dispatch = useDispatch();
   const favoriteData = useSelector((store) => store);
-
-  console.log(favoriteData, "this is fav data");
 
   useEffect(() => {
     const updateddata = JSON.parse(localStorage.getItem("favorite")) || [];
