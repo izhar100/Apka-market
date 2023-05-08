@@ -11,7 +11,9 @@ import Order from './Order/Order'
 import SingleProduct from './SingleProduct/SingleProduct'
 import PageNotFound from './PageNotFound'
 import PaymentDone from './Payment/PaymentDone'
-/*cerververv*/
+import Admin from './Admin'
+import AdminDashboard from './AdminDashboard'
+import AdminEditProduct from './AdminEditProduct'
 const MainRoutes = () => {
   return (
     <div>
@@ -26,6 +28,9 @@ const MainRoutes = () => {
         <Route path='/order' element={<Order/>}/>
         <Route path='/product/:id' element={<SingleProduct/>}/>
         <Route path='/payment' element={<PaymentDone/>}/>
+        <Route path="/admin" element={<Admin />} />
+      <Route path="/admindashboard" element={<AdminDashboard/>}/>
+      <Route path="/edit/:id" element={<AdminEditProduct/>}/> 
         <Route path='*' element={<PageNotFound/>}/>
       </Routes>
     </div>
