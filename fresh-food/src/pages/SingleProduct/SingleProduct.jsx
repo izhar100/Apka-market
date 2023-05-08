@@ -46,7 +46,7 @@ const SingleProduct = () => {
       name: singleProduct.name,
       image: singleProduct.image,
       category: singleProduct.category,
-      price: singleProduct.price,
+      price: singleProduct.price * quantity,
       quantity: quantity,
     };
 
