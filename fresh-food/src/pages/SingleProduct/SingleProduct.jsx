@@ -10,6 +10,8 @@ import axios from "axios";
 
 const SingleProduct = () => {
   const [singleProduct, setSingleProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  console.log(quantity);
   const { id } = useParams();
   console.log(id);
   const product = async () => {
@@ -22,6 +24,36 @@ const SingleProduct = () => {
   useEffect(() => {
     product();
   }, []);
+
+  const handleAdd = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleDec = () => {
+    setQuantity(quantity - 1);
+  };
+
+  const addToCart = () => {
+    const cartData = localStorage.getItem("cart");
+    let cartItems = [];
+
+    if (cartData) {
+      cartItems = JSON.parse(cartData);
+    }
+
+    const updatedItem = {
+      id: singleProduct.id,
+      name: singleProduct.name,
+      image: singleProduct.image,
+      category: singleProduct.category,
+      price: singleProduct.price,
+      quantity: quantity,
+    };
+
+    cartItems.push(updatedItem);
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+    alert("Product Added to Cart");
+  };
 
   return (
     <div className="w-[70%] mx-auto">
@@ -39,12 +71,26 @@ const SingleProduct = () => {
             alt="tomato"
           />
           <div className="flex justify-center mb-4">
-            <button className="font-bold my-2 mx-1 text-2xl">+</button>
-            <p className="font-bold my-2 mx-1 text-2xl">Quantity 1</p>
-            <button className="font-bold my-2 mx-1 text-2xl">-</button>
+            <button
+              className="font-bold my-2 mx-1 text-2xl"
+              onClick={() => handleAdd()}
+            >
+              +
+            </button>
+            <p className="font-bold my-2 mx-1 text-2xl">quantity {quantity}</p>
+            <button
+              className="font-bold my-2 mx-1 text-2xl"
+              disabled={quantity === 1}
+              onClick={() => handleDec()}
+            >
+              -
+            </button>
           </div>
           <div className="flex justify-center gap-3">
-            <button className="bg-[red] text-[white] p-2 font-sans hover:bg-yellow-400">
+            <button
+              className="bg-[red] text-[white] p-2 font-sans hover:bg-yellow-400"
+              onClick={() => addToCart()}
+            >
               Add To Card
             </button>
             <button className="bg-[green] text-[white] px-4 py-2  font-sans  hover:bg-yellow-400">
