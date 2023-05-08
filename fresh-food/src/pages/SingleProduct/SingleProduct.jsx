@@ -3,17 +3,13 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartReducer/action";
-// "id":4,
-// "name":"Fresho Tomato - Hybrid (Loose)",
-// "image":"https://www.bigbasket.com/media/uploads/p/l/10000200-2_2-fresho-tomato-hybrid.jpg",
-// "category":"vegetables",
-// "price":20,
-// "quantity":1
+import { useToast } from "@chakra-ui/react";
 
 const SingleProduct = () => {
   const [singleProduct, setSingleProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+  const toast=useToast()
   console.log(quantity);
   const { id } = useParams();
   const product = async () => {
@@ -56,7 +52,13 @@ const SingleProduct = () => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
 
     dispatch(addToCart(updatedItem));
-    alert("Product Added to Cart");
+    toast({
+      title: 'Product Added to cart.',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+      position:'top'
+    })
   };
 
   return (

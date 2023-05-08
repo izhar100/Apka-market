@@ -3,12 +3,25 @@ import React, { useEffect } from 'react'
 import { Avatar, AvatarBadge} from '@chakra-ui/react'
 import { AiOutlineUser } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { logOut } from '../../redux/AuthReducer/action'
 const Account = () => {
-    const userAuth=localStorage.getItem("userAuth"||"adminAuth")||false;
+    // const userAuth=localStorage.getItem("userAuth")||false;
+    // const adminAuth=localStorage.getItem("adminAuth")||false;
+    const {userAuth,adminAuth}=useSelector((store)=>{
+        return {
+            userAuth:store.AuthReducer.userAuth,
+            adminAuth:store.AuthReducer.adminAuth
+        }
+    },shallowEqual)
+
+    console.log("userAuth:",userAuth)
+    console.log("adminAuth:",adminAuth)
     const navigate=useNavigate()
     const toast=useToast()
-    if(userAuth===false){
+    const dispatch=useDispatch()
+    if(userAuth==false && adminAuth==false){
+        console.log("inside toast")
         toast({
             title: 'Please Login First.',
             status: 'warning',
@@ -19,7 +32,7 @@ const Account = () => {
         navigate("/login")
     }
     const handleClick=()=>{
-       
+       dispatch(logOut(false))
     }
     
     useEffect(()=>{
