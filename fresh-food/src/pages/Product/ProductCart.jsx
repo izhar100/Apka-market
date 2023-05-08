@@ -2,24 +2,37 @@ import { Box, Button, Flex, Image, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { IoHeartOutline } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { addToCart } from '../../redux/cartReducer/action';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorite } from '../../redux/favoriteReducer/action';
 import {useToast} from '@chakra-ui/react'
 
 const ProductCart = ({product}) => {
+    const userAuth=useSelector((store)=>store.AuthReducer.userAuth)
     const dispatch=useDispatch()
     const toast = useToast()
+    const navigate=useNavigate()
     const handleAdd=()=>{
-        dispatch(addToCart(product))
-        toast({
-            title: 'Product Added to cart.',
-            status: 'success',
-            duration: 3000,
-            isClosable: true,
-            position:'top'
-          })
+        if(userAuth===false){
+            toast({
+                title: 'Please Login First.',
+                status: 'warning',
+                duration: 3000,
+                isClosable: true,
+                position:'top'
+              }) 
+              navigate("/login") 
+        }else{
+            dispatch(addToCart(product))
+            toast({
+                title: 'Product Added to cart.',
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+                position:'top'
+              })
+        }
     }
     const handleFavorite=()=>{
         dispatch(addToFavorite(product))
