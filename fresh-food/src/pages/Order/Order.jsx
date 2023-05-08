@@ -20,10 +20,11 @@ import {
   InputLeftAddon,
   InputRightAddon,
   Textarea,
-  DrawerFooter
+  DrawerFooter,
+  useToast
 } from '@chakra-ui/react'
 import { color } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 const style={
   width:'60%',
   height:'120vh',
@@ -39,15 +40,153 @@ const bttn_style={
   backgroundColor:"#59c577",
   color:"white",
 }
+
 const OrderPage=()=> {
   const navigate=useNavigate()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const firstField = React.useRef()
-  const [input, setInput] = useState('')
+  const [name, setName] = useState('')
+  const [email,setEmail]=useState("")
+  const [phone, setPhone] = useState('')
+  const [zip, setZip] = useState('')
+  const [city,setCity]=useState("")
+  const [cardName,setcardName]=useState("")
+  const [cardNumber,setCardNumber]=useState("")
+  const [cardDate,setCardDate]=useState("")
+  const [cardCvv,setCardCvv]=useState("")
+  const handleNameChange = (e) => setName(e.target.value)
+  const handleEmailChange = (e) => setEmail(e.target.value)
+  const handlePhoneChange = (e) => setPhone(e.target.value)
+  const handleZipChange = (e) => setZip(e.target.value)
+  const handleCityChange = (e) => setCity(e.target.value)
 
-  const handleInputChange = (e) => setInput(e.target.value)
+  const handleCardNameChange = (e) => setcardName(e.target.value)
+  const handleCardNumberChange = (e) => setCardNumber(e.target.value)
+  const handleCardDateChange = (e) => setCardDate(e.target.value)
+  const handleCardCvvChange = (e) => setCardCvv(e.target.value)
+  const isError = Input === ''
+  const[shoppingTotal,setShoppingTotal]=useState([])
+  useEffect(() => {
+    const shoppingTotal = JSON.parse(localStorage.getItem('total'));
+    if (shoppingTotal) {
+      setShoppingTotal(shoppingTotal);
+  }
+},[])
 
-  const isError = input === ''
+const Toast=useToast()
+const handleWarning=(e)=>{
+  e.preventDefault()
+  if(name==""){
+    Toast({
+      title: 'Please enter your name.',
+      status: 'warning',
+      duration: 3000,
+      isClosable: true,
+      position:'top'
+    })
+  }
+  else if (email==""){
+    Toast({
+      title: 'Please enter your Email.',
+      status: 'warning',
+      duration: 3000,
+      isClosable: true,
+      position:'top'
+    })
+  }
+  else if (phone==""){
+    Toast({
+      title: 'Please enter your Phone No..',
+      status: 'warning',
+      duration: 3000,
+      isClosable: true,
+      position:'top'
+    })
+  }
+  else if (zip==""){
+    Toast({
+      title: 'Please enter your zip-code.',
+      status: 'warning',
+      duration: 3000,
+      isClosable: true,
+      position:'top'
+    })
+  }
+  else if (city==""){
+    Toast({
+      title: 'Please enter your city.',
+      status: 'warning',
+      duration: 3000,
+      isClosable: true,
+      position:'top'
+    })
+  }
+  else{
+    const warningData={
+      name,
+      email,
+      phone,
+      zip,
+      city
+    }
+    onOpen()
+    //console.log(warningData)
+  }
+
+}
+const toast=useToast()
+const handlePaymentOption=(el)=>{
+  el.preventDefault()
+  if(cardName==""){
+    toast({
+      title: 'Please enter your name.',
+      status: 'warning',
+      duration: 3000,
+      isClosable: true,
+      position:'top'
+    })
+  }
+  else if(cardNumber==""){
+    toast({
+      title: 'Please enter your Card Number.',
+      status: 'warning',
+      duration: 3000,
+      isClosable: true,
+      position:'top'
+    })
+  }
+  else if(cardDate==""){
+    toast({
+      title: 'Please enter your Month/Year format.',
+      status: 'warning',
+      duration: 3000,
+      isClosable: true,
+      position:'top'
+    })
+  }
+  else if(cardCvv==""){
+    toast({
+      title: 'Please enter your CVV.',
+      status: 'warning',
+      duration: 3000,
+      isClosable: true,
+      position:'top'
+    })
+  }
+  else{
+    const PaymentModeData={
+      cardName,
+      cardNumber,
+      cardDate,
+      cardCvv,
+      
+    }
+    navigate("/payment")
+    console.log(PaymentModeData)
+  }
+}
+const [payment,setPayment]=useState('Card Payment')
+//console.log(payment)
 
   return (
    <div className='ordder_page_container'>
@@ -55,7 +194,7 @@ const OrderPage=()=> {
       <h1>Shipping Address</h1>
     <FormControl isInvalid={isError}>
       <FormLabel>Your Name</FormLabel>
-      <Input type='email' value={input} onChange={handleInputChange} />
+      <Input type='email' value={name} onChange={handleNameChange} isRequired />
       {!isError ? (
         <FormHelperText>
           Enter your Name....
@@ -63,7 +202,7 @@ const OrderPage=()=> {
       ) : (
         <FormErrorMessage>Name is required.</FormErrorMessage>
       )}
-       <FormLabel>Your E-mail</FormLabel>
+       {/* <FormLabel>Your E-mail</FormLabel>
       <Input type='email' value={input} onChange={handleInputChange} />
       {!isError ? (
         <FormHelperText>
@@ -71,9 +210,9 @@ const OrderPage=()=> {
         </FormHelperText>
       ) : (
         <FormErrorMessage>Email is required.</FormErrorMessage>
-      )}
+      )} */}
       <FormLabel>Your E-mail</FormLabel>
-      <Input type='email' value={input} onChange={handleInputChange} />
+      <Input type='email' value={email} onChange={handleEmailChange} isRequired />
       {!isError ? (
         <FormHelperText>
           Enter your Email-Address....
@@ -82,7 +221,7 @@ const OrderPage=()=> {
         <FormErrorMessage>Email is required.</FormErrorMessage>
       )}
       <FormLabel>Your Phone</FormLabel>
-      <Input type='number' value={input} onChange={handleInputChange} />
+      <Input type='number' value={phone} onChange={handlePhoneChange} isRequired/>
       {!isError ? (
         <FormHelperText>
           Enter your Phone....
@@ -91,7 +230,7 @@ const OrderPage=()=> {
         <FormErrorMessage>Phone no. is required.</FormErrorMessage>
       )}
       <FormLabel>Zip Code</FormLabel>
-      <Input type='number' value={input} onChange={handleInputChange} />
+      <Input type='number' value={zip} onChange={handleZipChange} isRequired />
       {!isError ? (
         <FormHelperText>
           Zip Code...
@@ -100,7 +239,7 @@ const OrderPage=()=> {
         <FormErrorMessage>Zip Code is required.</FormErrorMessage>
       )}
       <FormLabel>Your City</FormLabel>
-      <Input type='text' value={input} onChange={handleInputChange} />
+      <Input type='text' value={city} onChange={handleCityChange} isRequired/>
       {!isError ? (
         <FormHelperText>
           Enter your City....
@@ -121,7 +260,7 @@ const OrderPage=()=> {
   </Select>
   <br />
   <br />
-  <Button style={bttn_style} onClick={onOpen}>
+  <Button style={bttn_style}  onClick={handleWarning } isRequired>
         Next
       </Button>
       <Drawer
@@ -139,21 +278,34 @@ const OrderPage=()=> {
           </DrawerHeader>
 
           <DrawerBody>
+            <div style={{textAlign:"justify",height:"200px",width:"200px",border:"0px solid black",
+          padding:"10px",
+          }}>
+            <p>Price Summary</p>
+            <hr />
+            <p>Cart Total: ₹{shoppingTotal}</p>
+            <p>Shipping Fee: ₹500</p>
+            <hr />
+            <p>Total Amount: ₹{shoppingTotal+500}</p>
+            </div>
+            
             <Stack spacing='24px'>
             <Box>
                 <img src="https://img.freepik.com/free-vector/realistic-monochromatic-credit-card_52683-74365.jpg?w=2000"/>
               </Box>
               <Box>
                 <FormLabel htmlFor='owner'>Select Payment Method</FormLabel>
-                <Select id='owner' defaultValue='segun'>
-                  <option value='segun'>Card Payment</option>
-                  <option value='kola'>Cash On Delivery</option>
-                  <option value='kola'>Upi</option>
+                <Select onChange={(e)=>setPayment(e.target.value)} value={payment} id='owner' defaultValue='segun'>
+                  <option value='Card Payment'>Card Payment</option>
+                  <option value='cash on delivery'>Cash on Delivery</option>
                 </Select>
               </Box>
-              <Box>
+              <Box display={payment=="cash on delivery"? "none" : "block"}>
+              <Box >
                 <FormLabel htmlFor='name'>Name of Owner</FormLabel>
                 <Input
+                value={cardName}
+                onChange={handleCardNameChange}
                   ref={firstField}
                   id='username'
                   placeholder='Name of Owner'
@@ -161,9 +313,11 @@ const OrderPage=()=> {
               </Box>
 
               <Box>
-                <FormLabel htmlFor='url'>Card Number</FormLabel>
+                <FormLabel htmlFor='number'>Card Number</FormLabel>
                 <InputGroup>
                   <Input
+                  value={cardNumber}
+                  onChange={handleCardNumberChange}
                     type='number'
                     id='url'
                     placeholder='Card Number'
@@ -174,17 +328,23 @@ const OrderPage=()=> {
                 <FormLabel htmlFor='url'></FormLabel>
                 <InputGroup>
                   <Input
+                  
+                  value={cardDate}
+                  onChange={handleCardDateChange}
                   style={{marginRight:"10px"}}
-                    type='number'
+                    type=''
                     id='url'
                     placeholder='Month/Year'
                   />
                   <Input
+                  value={cardCvv}
+                  onChange={handleCardCvvChange}
                     type='number'
                     id='url'
                     placeholder='CVV'
                   />
                 </InputGroup>
+              </Box>
               </Box>
             </Stack>
           </DrawerBody>
@@ -193,7 +353,7 @@ const OrderPage=()=> {
             <Button variant='outline' mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button onClick={()=>navigate("/payment")} style={bttn_style}>MakePayment</Button>
+           <Button onClick={handlePaymentOption} style={bttn_style}>MakePayment</Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
