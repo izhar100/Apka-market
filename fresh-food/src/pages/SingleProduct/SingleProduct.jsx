@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/cartReducer/action";
 // "id":4,
 // "name":"Fresho Tomato - Hybrid (Loose)",
 // "image":"https://www.bigbasket.com/media/uploads/p/l/10000200-2_2-fresho-tomato-hybrid.jpg",
@@ -11,6 +13,7 @@ import axios from "axios";
 const SingleProduct = () => {
   const [singleProduct, setSingleProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
   console.log(quantity);
   const { id } = useParams();
   console.log(id);
@@ -33,7 +36,7 @@ const SingleProduct = () => {
     setQuantity(quantity - 1);
   };
 
-  const addToCart = () => {
+  const addCart = () => {
     const cartData = localStorage.getItem("cart");
     let cartItems = [];
 
@@ -52,6 +55,8 @@ const SingleProduct = () => {
 
     cartItems.push(updatedItem);
     localStorage.setItem("cart", JSON.stringify(cartItems));
+
+    dispatch(addToCart(updatedItem));
     alert("Product Added to Cart");
   };
 
@@ -89,7 +94,7 @@ const SingleProduct = () => {
           <div className="flex justify-center gap-3">
             <button
               className="bg-[red] text-[white] p-2 font-sans hover:bg-yellow-400"
-              onClick={() => addToCart()}
+              onClick={() => addCart()}
             >
               Add To Card
             </button>
