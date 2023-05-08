@@ -35,7 +35,7 @@ export const AdminNavbar = () => {
   return (
     <>
       <DIV>
-      <img src="https://images.freeimages.com/images/large-previews/ab7/shields-1-1244388.jpg" alt="shild_image" />
+      <h4 >Home</h4>
      <Link to={"/admindashboard"}> <h4 style={{paddingLeft:"100px"}}>Dashboard</h4> </Link>
        <Link to={"/admin"}> <h4>Add Product</h4> </Link>
         {/* <h3>Shoping App</h3>
@@ -90,11 +90,11 @@ export const AdminNavbar = () => {
 };
 
 const DIV = styled.div`
-  width: 100%;
+  width: 95%;
   margin: auto;
   display: flex;
   justify-content: space-between;
-  background-color:#62aae5;
+  /* background-color:#62aae5; */
   align-items: center;
   gap: 20px;
   border-bottom: 1px solid gray;
