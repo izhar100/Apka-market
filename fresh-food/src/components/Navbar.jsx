@@ -4,12 +4,13 @@ import { IoSearchOutline, IoCartOutline, IoHeartOutline, IoPersonOutline, IoHome
 import { MdHome } from "react-icons/md";
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import filterPNG from "../assets/filters.png"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../redux/ProductReducer/action';
 import { Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
 import { Radio, RadioGroup } from '@chakra-ui/react'
 import logo from "../assets/logo.png"
 const Navbar = () => {
+    const cartData=useSelector((store)=>store.CartReducer.cartData)
     const [searchParam, setSearchParams] = useSearchParams()
     const initQuery = searchParam.get('q')
     const [query, setQuery] = useState(initQuery || "")
@@ -142,6 +143,7 @@ const Navbar = () => {
                 <Flex display={{ lg: "flex", xl: "flex", md: "flex", sm: "none", base: "none" }} pl={"20px"} justifyContent={"space-between"} alignItems={"center"} w={"25%"}>
                     <MdHome size="30px" onClick={() => navigate("/home")} style={{ cursor: "pointer" }} />
                     <IoHeartOutline size="30px" onClick={() => navigate("/favorite")} style={{ cursor: "pointer" }} />
+                    <Text position={"absolute"} top={"6px"} right={"123px"}>{cartData.length}</Text>
                     <IoCartOutline size="30px" onClick={() => navigate("/cart")} style={{ cursor: "pointer" }} />
                     <IoPersonOutline size="30px" onClick={() => navigate("/profile")} style={{ cursor: "pointer" }} />
                 </Flex>

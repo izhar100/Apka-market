@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import image_1 from "../../../src/asset/image_1.png";
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
-import Login from "../LoginSignUpPage/Login";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSplaced } from "../../redux/splaceReducer/action";
 
 const SplashScreen1 = () => {
-  const [splace,setSplace]=useState(false)
+  const [splace,setSplace]=useState(localStorage.getItem("splace")||false)
+  const navigate=useNavigate()
+  const dispatch=useDispatch()
   const handleClick=()=>{
-    setSplace(true)
-  }
-  if(splace){
-    return <Login/>
+     dispatch(setSplaced())
   }
   return (<>
   <Box h={"100vh"}  bgGradient="linear(to-b, white, #5eff5e)">
