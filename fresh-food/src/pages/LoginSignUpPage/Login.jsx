@@ -1,23 +1,92 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlinePhone,AiOutlineMail } from "react-icons/ai";
 import { IconName, BsFillEnvelopeAtFill,BsKey } from "react-icons/bs";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import SignUp from "./SignUp";
+import axios from "axios";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { adminLogin, getUserData, userLogin } from "../../redux/AuthReducer/action";
+import { useToast } from "@chakra-ui/react";
 
 const imgLink =
   "https://img.freepik.com/free-photo/groceries-packages-delivery-covid-19-quarantine-shopping-concept-handsome-smiling-courier-red-uniform-give-cheeky-wink-as-delivering-food-box-online-order-client-house_1258-58697.jpg";
 
 const Login = () => {
+  const {userData,adminAuth}=useSelector((store)=>{
+    console.log(store.AuthReducer.userData)
+    return {
+      userData:store.AuthReducer.userData,
+      adminAuth:store.AuthReducer.adminAuth
+    }
+  },shallowEqual)
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
+  const dispatch=useDispatch()
+  const toast = useToast()
+  const navigate=useNavigate()
   const handleLogin=(e)=>{
     e.preventDefault()
-     const loginData={
-      email,
-      password
-     }
-     console.log(loginData)
+    if(email==""){
+      toast({
+        title: 'Please enter email.',
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+        position:'top'
+      })
+    }else if(password==""){
+      toast({
+        title: 'Please enter password.',
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+        position:'top'
+      })
+    }else if(email=="admin@gmail.com" && password=="admin"){
+      dispatch(adminLogin(true))
+      localStorage.setItem("adminAuth",true)
+      toast({
+        title: 'Login Success.',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+        position:'top'
+      })
+      navigate("/admin")
+    }else{
+      let auth=false;
+      for(let i=0; i<userData.length; i++){
+        if(userData[i].email==email && userData[i].password==password){
+          auth=true;
+          dispatch(userLogin(true))
+          localStorage.setItem("userAuth",true)
+          toast({
+            title: 'Login Success.',
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+            position:'top'
+          })
+          navigate("/product")
+        }
+      }
+      if(auth===false){
+        toast({
+        title: 'Wrong email or Password.',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+        position:'top'
+      })
+      }
+
+    }
   }
+  useEffect(()=>{
+     dispatch(getUserData)
+  },[])
+
   return (
     <DIV>
       <div className="container">
@@ -36,7 +105,7 @@ const Login = () => {
           <input className="submit" type="submit" value={"Sign In"} onClick={handleLogin} />
           <h4>
             New on Apka Market?
-            <span>
+            <span style={{cursor:"pointer"}}>
               {" "}
               <Link to={"/signup"}>Create Account</Link>
             </span>

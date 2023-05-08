@@ -8,16 +8,23 @@ import MainRoutes from './pages/MainRoutes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/LoginSignUpPage/Login';
 import SplaceScreen from './pages/splaceScreen/SplaceScreen';
+import { useEffect } from 'react';
 
 function App() {
-  // const isAuth=useSelector((store)=>store.AuthReducer.isAuth)
-  // if(isAuth==false){
-  //   return (
-  //     <div className="App" style={{backgroundColor:"GhostWhite"}}>
-  //       <SplaceScreen/>
-  //     </div>
-  //   )
-  // }
+  const splace=useSelector((store)=>{
+    console.log(store.SplaceReducer)
+    return store.SplaceReducer;
+  })
+  useEffect(()=>{
+
+  },[splace])
+  if(splace==false){
+    return (
+      <div className="App" style={{backgroundColor:"GhostWhite"}}>
+        <SplaceScreen/>
+      </div>
+    )
+  }
   return (
     <div className="App" style={{backgroundColor:"GhostWhite"}}>
       <Navbar/>
