@@ -1,5 +1,5 @@
 # Apka Market - a fully function Fruits and Vegetables selling application
-deployed link: 
+deployed link: https://aapka-market.netlify.app/
 
 
 # pages
