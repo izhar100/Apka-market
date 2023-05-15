@@ -40,6 +40,7 @@ Home Page
   ![product page](https://github.com/izhar100/rigid-yarn-4261/assets/95142289/44a6cc7c-ba4c-4181-8ceb-1896331efae8)
 
 Shopping cart page
+
 ![Shopping cart](https://github.com/izhar100/rigid-yarn-4261/assets/95142289/297f0486-7bb2-4300-969d-215cd8ecb4ce)
 
 
