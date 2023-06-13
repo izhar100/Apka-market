@@ -31,24 +31,36 @@ Admin
  - JSON-Server (Deployed on Cyclic)
 
 # Snapshots
+Splace screen
+
+![aapka-market netlify app_](https://github.com/izhar100/Apka-market/assets/95142289/e39b4c64-94cf-4e43-9383-bc40ea944b62)
+
+ 
 Home Page
 
-![aapka-market netlify app_favorite (2)](https://github.com/izhar100/rigid-yarn-4261/assets/95142289/90dcbe83-c9db-467e-81fb-7acc5b87b1c9)
- 
-  Product Page
-  
-  ![product page](https://github.com/izhar100/rigid-yarn-4261/assets/95142289/44a6cc7c-ba4c-4181-8ceb-1896331efae8)
+![aapka-market netlify app_favorite (2)](https://github.com/izhar100/Apka-market/assets/95142289/6a659a39-a8f1-4732-9975-b10a9a3e9598)
 
-Shopping cart page
 
-![Shopping cart](https://github.com/izhar100/rigid-yarn-4261/assets/95142289/297f0486-7bb2-4300-969d-215cd8ecb4ce)
+Product page
+
+![aapka-market netlify app_product](https://github.com/izhar100/Apka-market/assets/95142289/ff72b1fe-421a-4d63-b943-93987086e43f)
+
 
 Login/Signup
 
+![aapka-market netlify app_signup](https://github.com/izhar100/Apka-market/assets/95142289/2fbea0bf-3c21-4c79-962c-632ee54887d7)
 
-![aapka-market netlify app_signup](https://github.com/izhar100/rigid-yarn-4261/assets/95142289/942936ca-87d9-42d6-bc7b-9cd46425d824)
 
 Favorite Page 
 
-![aapka-market netlify app_favorite](https://github.com/izhar100/rigid-yarn-4261/assets/95142289/b793b7c9-526e-42a9-a843-aa385c45d3d2)
+![aapka-market netlify app_favorite](https://github.com/izhar100/Apka-market/assets/95142289/1749ef20-cecd-4708-85ac-a51a73b9538b)
+
+Cart Page
+
+![aapka-market netlify app_cart](https://github.com/izhar100/Apka-market/assets/95142289/6603944d-be40-4bd2-8834-282eee46f01b)
+
+Order Page
+
+![aapka-market netlify app_order](https://github.com/izhar100/Apka-market/assets/95142289/24023a5e-058e-49df-a0cd-a02070184481)
+
 
